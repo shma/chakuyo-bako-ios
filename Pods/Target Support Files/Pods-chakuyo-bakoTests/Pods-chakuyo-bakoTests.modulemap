@@ -1,0 +1,6 @@
+framework module Pods_chakuyo_bakoTests {
+  umbrella header "Pods-chakuyo-bakoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
