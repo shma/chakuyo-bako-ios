@@ -16,17 +16,19 @@ class ScanViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var peripheralList:[CBPeripheral] = []
     
-    let bluetoothManager = CoreBluetoothManager.getInstance()
+    let bluetoothManager = CoreBluetoothManager.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if bluetoothManager.connectedPeripheral != nil {
-//            bluetoothManager.disconnectPeripheral()
-//        }
+        if bluetoothManager.connectedPeripheral != nil {
+            print("connect something")
+            //            bluetoothManager.disconnectPeripheral()
+        }
         bluetoothManager.delegate = self
     }
 
     @IBAction func scanButtonDidPush(_ sender: Any) {
+        print("scan pushed")
         bluetoothManager.scan()
     }
     
@@ -36,7 +38,6 @@ class ScanViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         bluetoothManager.connect(peripheral: peripheralList[indexPath.row])
     }
     
@@ -53,11 +54,19 @@ class ScanViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     
-    func didReadValueForCharacteristic(_ characteristic: CBCharacteristic) {
+    func didDiscoverServices(_ peripheral: CBPeripheral) {
         let next = storyboard!.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController
         self.present(next!,animated: true, completion: { () in
             // next?.textField2.text = self.textField.text
+            next?.bluetoothManager = self.bluetoothManager
         })
+    }
+    
+    func didReadValueForCharacteristic(_ characteristic: CBCharacteristic) {
+//        let next = storyboard!.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController
+//        self.present(next!,animated: true, completion: { () in
+//            // next?.textField2.text = self.textField.text
+//        })
     }
 }
 

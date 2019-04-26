@@ -111,19 +111,16 @@ public protocol BluetoothDelegate : NSObjectProtocol {
     func didFailToReadValueForCharacteristic(_ error: Error)
 
     // Konashi Original ここにあるの微妙
-        func didReadEnvironmentData(tempCal: Double, presCal: Double, humCal: Double)
+    func didReadEnvironmentData(tempCal: Double, presCal: Double, humCal: Double)
 }
 
 extension BluetoothDelegate {
 
     func didUpdateState(_ state: CBManagerState) {}
     
-
     func didDiscoverPeripheral(_ peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {}
     
-
     func didConnectedPeripheral(_ connectedPeripheral: CBPeripheral) {}
-    
 
     func failToConnectPeripheral(_ peripheral: CBPeripheral, error: Error) {}
     
