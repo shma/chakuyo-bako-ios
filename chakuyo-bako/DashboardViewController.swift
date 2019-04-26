@@ -11,23 +11,21 @@ import CoreBluetooth
 
 class DashboardViewController: UIViewController, BluetoothDelegate {
 
-    var bluetoothManager: CoreBluetoothManager?
-
+    let bluetoothManager = CoreBluetoothManager.getInstance()
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var presLabel: UILabel!
     @IBOutlet weak var humLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-         bluetoothManager?.delegate = self
+         bluetoothManager.delegate = self
 //          bluetoothManager.readEnvironmentData()
         // Do any additional setup after loading the view.
+        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {_ in
+            self.bluetoothManager.readEnvironmentData()
+        })
     }
-    
-    @IBAction func readButtonDidPush(_ sender: Any) {
-         bluetoothManager?.discoverCharacteristics()
-        // bluetoothManager.readEnvironmentData()
-    }
-    
+        
     // MARK - BluetoothDelegate
     func didReadEnvironmentData(tempCal: Double, presCal: Double, humCal: Double) {
         tempLabel.text = String(tempCal)

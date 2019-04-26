@@ -16,7 +16,7 @@ class ScanViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var peripheralList:[CBPeripheral] = []
     
-    let bluetoothManager = CoreBluetoothManager.init()
+    let bluetoothManager = CoreBluetoothManager.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class ScanViewController: UIViewController, UITableViewDelegate, UITableViewData
         let next = storyboard!.instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController
         self.present(next!,animated: true, completion: { () in
             // next?.textField2.text = self.textField.text
-            next?.bluetoothManager = self.bluetoothManager
+            // next?.bluetoothManager = self.bluetoothManager
         })
     }
     
