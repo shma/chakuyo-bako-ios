@@ -22,6 +22,17 @@
 		BC69D249226CA2C6006DD5F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC69D247226CA2C6006DD5F8 /* LaunchScreen.storyboard */; };
 		BC69D254226CA2C6006DD5F8 /* chakuyo_bakoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69D253226CA2C6006DD5F8 /* chakuyo_bakoTests.swift */; };
 		BC69D25F226CA2C6006DD5F8 /* chakuyo_bakoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69D25E226CA2C6006DD5F8 /* chakuyo_bakoUITests.swift */; };
+		BC9175482273C35C00149C3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC9175472273C35C00149C3C /* GoogleService-Info.plist */; };
+		BC91754B2273CF2A00149C3C /* EnvironmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91754A2273CF2A00149C3C /* EnvironmentData.swift */; };
+		BC91754F227427C400149C3C /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91754E227427C400149C3C /* DashboardTableViewCell.xib */; };
+		BC91755222745DE600149C3C /* ScanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91755122745DE600149C3C /* ScanTableViewCell.xib */; };
+		BC91755422745FC900149C3C /* ScanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91755322745FC900149C3C /* ScanTableViewCell.swift */; };
+		BC91755722749F3400149C3C /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91755622749F3400149C3C /* DashboardTableViewCell.swift */; };
+		BC91755922753AE500149C3C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91755822753AE500149C3C /* DetailViewController.swift */; };
+		BC91755D2275580100149C3C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91755C2275580100149C3C /* LoadingView.xib */; };
+		BC91755F2275583500149C3C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91755E2275583500149C3C /* LoadingView.swift */; };
+		BC917561227593AC00149C3C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC917560227593AC00149C3C /* NotificationManager.swift */; };
+		BC9175632275B00000149C3C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9175622275B00000149C3C /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +79,17 @@
 		BC69D25A226CA2C6006DD5F8 /* chakuyo-bakoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chakuyo-bakoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC69D25E226CA2C6006DD5F8 /* chakuyo_bakoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chakuyo_bakoUITests.swift; sourceTree = "<group>"; };
 		BC69D260226CA2C6006DD5F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC9175472273C35C00149C3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC91754A2273CF2A00149C3C /* EnvironmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentData.swift; sourceTree = "<group>"; };
+		BC91754E227427C400149C3C /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
+		BC91755122745DE600149C3C /* ScanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanTableViewCell.xib; sourceTree = "<group>"; };
+		BC91755322745FC900149C3C /* ScanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTableViewCell.swift; sourceTree = "<group>"; };
+		BC91755622749F3400149C3C /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		BC91755822753AE500149C3C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BC91755C2275580100149C3C /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		BC91755E2275583500149C3C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BC917560227593AC00149C3C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		BC9175622275B00000149C3C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EA63A2B6169523F044DE6EE8 /* Pods_chakuyo_bakoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chakuyo_bakoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5CC6C3227025D4003800DE /* Calibration.swift */,
+				BC917560227593AC00149C3C /* NotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,12 +182,17 @@
 		BC69D23D226CA2C5006DD5F8 /* chakuyo-bako */ = {
 			isa = PBXGroup;
 			children = (
+				BC91755022745D9A00149C3C /* View */,
+				BC9175492273CF1000149C3C /* Model */,
 				BC5CC6CB227085F8003800DE /* BLE */,
 				BC5CC6C2227025C6003800DE /* Utils */,
 				BC5CC6BF226FCF0C003800DE /* Constant */,
 				BC69D23E226CA2C5006DD5F8 /* AppDelegate.swift */,
-				BC5CC6C72270764C003800DE /* DashboardViewController.swift */,
 				BC69D240226CA2C5006DD5F8 /* ScanViewController.swift */,
+				BC5CC6C72270764C003800DE /* DashboardViewController.swift */,
+				BC91755822753AE500149C3C /* DetailViewController.swift */,
+				BC9175622275B00000149C3C /* SettingViewController.swift */,
+				BC9175472273C35C00149C3C /* GoogleService-Info.plist */,
 				BC69D242226CA2C5006DD5F8 /* Main.storyboard */,
 				BC69D245226CA2C6006DD5F8 /* Assets.xcassets */,
 				BC69D247226CA2C6006DD5F8 /* LaunchScreen.storyboard */,
@@ -191,6 +219,27 @@
 			path = "chakuyo-bakoUITests";
 			sourceTree = "<group>";
 		};
+		BC9175492273CF1000149C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC91754A2273CF2A00149C3C /* EnvironmentData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC91755022745D9A00149C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC91754E227427C400149C3C /* DashboardTableViewCell.xib */,
+				BC91755122745DE600149C3C /* ScanTableViewCell.xib */,
+				BC91755322745FC900149C3C /* ScanTableViewCell.swift */,
+				BC91755622749F3400149C3C /* DashboardTableViewCell.swift */,
+				BC91755C2275580100149C3C /* LoadingView.xib */,
+				BC91755E2275583500149C3C /* LoadingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D25FFCAEB70E1946CC316891 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +264,7 @@
 				BC69D237226CA2C5006DD5F8 /* Sources */,
 				BC69D238226CA2C5006DD5F8 /* Frameworks */,
 				BC69D239226CA2C5006DD5F8 /* Resources */,
+				AE01344589DAD8D738895743 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,6 +325,11 @@
 				TargetAttributes = {
 					BC69D23A226CA2C5006DD5F8 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BC69D24E226CA2C6006DD5F8 = {
 						CreatedOnToolsVersion = 10.1;
@@ -312,8 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC69D249226CA2C6006DD5F8 /* LaunchScreen.storyboard in Resources */,
+				BC91754F227427C400149C3C /* DashboardTableViewCell.xib in Resources */,
 				BC69D246226CA2C6006DD5F8 /* Assets.xcassets in Resources */,
 				BC69D244226CA2C5006DD5F8 /* Main.storyboard in Resources */,
+				BC91755222745DE600149C3C /* ScanTableViewCell.xib in Resources */,
+				BC91755D2275580100149C3C /* LoadingView.xib in Resources */,
+				BC9175482273C35C00149C3C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +459,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AE01344589DAD8D738895743 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-chakuyo-bako/Pods-chakuyo-bako-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-chakuyo-bako/Pods-chakuyo-bako-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -407,13 +498,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC91755922753AE500149C3C /* DetailViewController.swift in Sources */,
 				BC5CC6C4227025D4003800DE /* Calibration.swift in Sources */,
 				BC69D241226CA2C5006DD5F8 /* ScanViewController.swift in Sources */,
 				BC5CC6C82270764C003800DE /* DashboardViewController.swift in Sources */,
 				BC69D23F226CA2C5006DD5F8 /* AppDelegate.swift in Sources */,
+				BC9175632275B00000149C3C /* SettingViewController.swift in Sources */,
+				BC91755F2275583500149C3C /* LoadingView.swift in Sources */,
+				BC917561227593AC00149C3C /* NotificationManager.swift in Sources */,
+				BC91755722749F3400149C3C /* DashboardTableViewCell.swift in Sources */,
+				BC91755422745FC900149C3C /* ScanTableViewCell.swift in Sources */,
 				BC5CC6C1226FCF1C003800DE /* Constant.swift in Sources */,
 				BC5CC6CA22707A3F003800DE /* CoreBluetoothManager.swift in Sources */,
 				BC5CC6CD22708618003800DE /* BluetoothDelegate.swift in Sources */,
+				BC91754B2273CF2A00149C3C /* EnvironmentData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

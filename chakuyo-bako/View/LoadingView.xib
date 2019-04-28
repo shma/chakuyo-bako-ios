@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="LoadingView" id="iN0-l3-epB" customClass="LoadingView" customModule="chakuyo_bako" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-Oi-ihA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-Gb-YZL">
+                            <rect key="frame" x="117.5" y="263.5" width="140" height="140"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjL-Ob-E2B" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                    <rect key="frame" x="45" y="45" width="50" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="jyX-4s-bia"/>
+                                        <constraint firstAttribute="height" constant="50" id="rW8-pk-YWv"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thx-hk-TPh">
+                                    <rect key="frame" x="0.0" y="111" width="140" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1058823529" green="0.5450980392" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="140" id="1Jw-V3-e2b"/>
+                                <constraint firstAttribute="bottom" secondItem="thx-hk-TPh" secondAttribute="bottom" constant="12" id="LWW-Os-O8q"/>
+                                <constraint firstItem="TjL-Ob-E2B" firstAttribute="centerY" secondItem="1F9-Gb-YZL" secondAttribute="centerY" id="X7S-sJ-jI8"/>
+                                <constraint firstItem="TjL-Ob-E2B" firstAttribute="centerX" secondItem="1F9-Gb-YZL" secondAttribute="centerX" id="eZn-AH-bhn"/>
+                                <constraint firstAttribute="width" constant="140" id="neQ-C1-NKI"/>
+                                <constraint firstItem="thx-hk-TPh" firstAttribute="leading" secondItem="1F9-Gb-YZL" secondAttribute="leading" id="pzf-e0-nIj"/>
+                                <constraint firstAttribute="trailing" secondItem="thx-hk-TPh" secondAttribute="trailing" id="wUR-5z-pII"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="1F9-Gb-YZL" firstAttribute="centerY" secondItem="cDw-Oi-ihA" secondAttribute="centerY" id="C1r-Ea-Igp"/>
+                        <constraint firstItem="1F9-Gb-YZL" firstAttribute="centerX" secondItem="cDw-Oi-ihA" secondAttribute="centerX" id="deE-wR-ppS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cDw-Oi-ihA" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Y6j-jA-ux6"/>
+                <constraint firstItem="cDw-Oi-ihA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dJ5-fq-2cy"/>
+                <constraint firstItem="cDw-Oi-ihA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e8n-xP-rPH"/>
+                <constraint firstItem="cDw-Oi-ihA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ogz-29-IQ3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="indicatorView" destination="TjL-Ob-E2B" id="G0w-gx-hmm"/>
+                <outlet property="loadingView" destination="cDw-Oi-ihA" id="fqu-lA-N3J"/>
+                <outlet property="loadingViewChild" destination="1F9-Gb-YZL" id="dzS-GB-H6M"/>
+                <outlet property="messageLabel" destination="thx-hk-TPh" id="nvT-wf-HVw"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="136.28185907046478"/>
+        </view>
+    </objects>
+</document>

@@ -6,6 +6,11 @@ target 'chakuyo-bako' do
   use_frameworks!
 
   # Pods for chakuyo-bako
+  pod 'Firebase/Core'
+  pod 'RealmSwift'
+  pod 'NVActivityIndicatorView'
+
+  pod 'Charts'
 
   target 'chakuyo-bakoTests' do
     inherit! :search_paths

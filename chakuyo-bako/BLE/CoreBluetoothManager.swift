@@ -9,6 +9,7 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
     var peripherals: [CBPeripheral] = []
     var peripheralManager: CBPeripheralManager!
     var isScanning = false
+    private var isConnecting = false
     
     var i2cConfig: CBCharacteristic?
     var i2cStartStop: CBCharacteristic?
@@ -28,6 +29,8 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
     let ADDR_BME280: UInt8 = 0x76
     
     var readSequenceCount = 0
+    var isI2CReady = false
+    
     var datas = [UInt8]()
     
     // TODO:  外に出したいず
@@ -93,6 +96,7 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
     }
     
     func scan() {
+        print("start scan")
         centralManager?.scanForPeripherals(withServices: nil, options: nil)
     }
 
@@ -102,6 +106,49 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
 
     func connect(peripheral: CBPeripheral) {
         centralManager?.connect(peripheral, options: [CBConnectPeripheralOptionNotifyOnDisconnectionKey : true])
+    }
+    
+    func disconnectPeripheral() {
+        if connectedPeripheral != nil {
+            centralManager?.cancelPeripheralConnection(connectedPeripheral!)
+            connectedPeripheral = nil
+            peripherals = []
+            isScanning = false
+            isConnecting = false
+            
+            i2cConfig = nil
+            i2cStartStop = nil
+            i2cWriteC = nil
+            i2cReadParameter = nil
+            i2cRead = nil
+            
+            readSequenceCount = 0
+            isI2CReady = false
+            datas = []
+            
+            // TODO:  外に出したいず
+            digT1 = 0
+            digT2 = 0
+            digT3 = 0
+            digP1 = 0
+            digP2 = 0
+            digP3 = 0
+            digP4 = 0
+            digP5 = 0
+            digP6 = 0
+            digP7 = 0
+            digP8 = 0
+            digP9 = 0
+            digH1 = 0
+            digH2 = 0
+            digH3 = 0
+            digH4 = 0
+            digH5 = 0
+            digH6 = 0
+            
+            // BME280のかキャリブレーション用グローバル変数。重要
+            tFine = 0
+        }
     }
     
     // MARK: - CentralManager Delegate
@@ -123,11 +170,19 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
         connectedPeripheral = peripheral
+        isI2CReady = false
+        readSequenceCount = 0
+        
         peripheral.delegate = self
         let serviceId = CBUUID(string: "229BFF00-03FB-40DA-98A7-B0DEF65C2D4B")
         peripheral.discoverServices([serviceId])
+    }
+    
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("Bluetooth Manager --> didDisconnectPeripheral")
+//        connected = false
+        self.delegate?.didDisconnectPeripheral(peripheral)
     }
     
     // MARK: - PeripheralManager Delegate
@@ -148,20 +203,20 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
         delegate?.didDiscoverServices(peripheral)
     }
     
-        func discoverCharacteristics() {
-            guard let connectedPeripheral = connectedPeripheral else {
-                return
-            }
-    
-            let services = connectedPeripheral.services
-            if services == nil || services!.count < 1 { // Validate service array
-                return;
-            }
-    
-            for service in services! {
-                connectedPeripheral.discoverCharacteristics(nil, for: service)
-            }
+    func discoverCharacteristics() {
+        guard let connectedPeripheral = connectedPeripheral else {
+            return
         }
+
+        let services = connectedPeripheral.services
+        if services == nil || services!.count < 1 { // Validate service array
+            return;
+        }
+
+        for service in services! {
+            connectedPeripheral.discoverCharacteristics(nil, for: service)
+        }
+    }
     
     // Characteristicsを登録する
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -189,14 +244,52 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
                 }
             }
             
+            guard let i2cConfig = i2cConfig,
+                let i2cRead = i2cRead
+                else {
+                    return
+            }
+            
+            // KonashiをI2Cモードに
+            writeValue(uData: [0x01], characteristic: i2cConfig)
+            
+            i2cWrite([CTRL_HUM_REG], address: 0xF2);
+            i2cWrite([CTRL_MEAS_REG], address: 0xF4);
+            i2cWrite([CONFIG_REG], address: 0xF5);
+            
+            i2cWrite([0x88])
+            i2cReadRequest(readLength: 0x08)
+            connectedPeripheral.readValue(for: i2cRead)
+            
+            i2cWrite([0x90])
+            i2cReadRequest(readLength: 8)
+            connectedPeripheral.readValue(for: i2cRead)
+            
+            i2cWrite([0x98])
+            i2cReadRequest(readLength: 8)
+            connectedPeripheral.readValue(for: i2cRead)
+            
+            i2cWrite([CTRL_HUM_REG], address: 0xF2);
+            i2cWrite([CTRL_MEAS_REG], address: 0xF4);
+            i2cWrite([CONFIG_REG], address: 0xF5);
+            
+            i2cWrite([0xA1])
+            i2cReadRequest(readLength: 1)
+            connectedPeripheral.readValue(for: i2cRead)
+            
+            i2cWrite([CTRL_HUM_REG], address: 0xF2);
+            i2cWrite([CTRL_MEAS_REG], address: 0xF4);
+            i2cWrite([CONFIG_REG], address: 0xF5);
+            
+            i2cWrite([0xE1])
+            i2cReadRequest(readLength: 7)
+            connectedPeripheral.readValue(for: i2cRead)
+            
             readEnvironmentData()
         }
     }
     
     public func readEnvironmentData() {
-        // 前回読み込みが失敗していても、強い気持ちで読みにいく。
-        self.readSequenceCount = 0
-        
         guard let i2cConfig = i2cConfig,
             let i2cRead = i2cRead
             else {
@@ -204,74 +297,67 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
         }
         
         // KonashiをI2Cモードに
-        writeValue(uData: [0x01], characteristic: i2cConfig)
-        
-        
         i2cWrite([CTRL_HUM_REG], address: 0xF2);
         i2cWrite([CTRL_MEAS_REG], address: 0xF4);
         i2cWrite([CONFIG_REG], address: 0xF5);
         
         i2cWrite([0x88])
-        i2cReadRequest(readLength: 0x08)
-        connectedPeripheral.readValue(for: i2cRead)
-        
-        i2cWrite([0x90])
-        i2cReadRequest(readLength: 8)
-        connectedPeripheral.readValue(for: i2cRead)
-        
-        i2cWrite([0x98])
-        i2cReadRequest(readLength: 8)
-        connectedPeripheral.readValue(for: i2cRead)
-        
-        i2cWrite([CTRL_HUM_REG], address: 0xF2);
-        i2cWrite([CTRL_MEAS_REG], address: 0xF4);
-        i2cWrite([CONFIG_REG], address: 0xF5);
-        
-        i2cWrite([0xA1])
-        i2cReadRequest(readLength: 1)
-        connectedPeripheral.readValue(for: i2cRead)
-        
-        i2cWrite([CTRL_HUM_REG], address: 0xF2);
-        i2cWrite([CTRL_MEAS_REG], address: 0xF4);
-        i2cWrite([CONFIG_REG], address: 0xF5);
-        
-        i2cWrite([0xE1])
-        i2cReadRequest(readLength: 7)
-        connectedPeripheral.readValue(for: i2cRead)
-        
-        // しつこく書き込む
-        i2cWrite([CTRL_HUM_REG], address: 0xF2);
-        i2cWrite([CTRL_MEAS_REG], address: 0xF4);
-        i2cWrite([CONFIG_REG], address: 0xF5);
         
         // 気温・気圧・湿度をくださいリクエスト
         i2cWrite([0xF7])
         i2cReadRequest(readLength: 8)
         connectedPeripheral.readValue(for: i2cRead)
+
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        
         guard let data = characteristic.value else {return}
+        
+        print(readSequenceCount)
+        
+        if (isI2CReady) {
+            var environmentData = [Int]()
+            //UInt8でくるのでキャリブレーション用にIntにキャスト
+            environmentData = data[0...7].map{Int($0)}
+            
+            let presRaw = (environmentData[0] << 12) | (environmentData[1] << 4) | (environmentData[2] >> 4)
+            let tempRaw = ((environmentData[3] << 12) | (environmentData[4] << 4) | (environmentData[5] >> 4))
+            let humRaw  = ((environmentData[6] << 8) | environmentData[7])
+            
+            // キャリブレーションをかける。
+            let tempCal = Double(calibratedT(tempRaw)) / 100.0
+            let presCal = Double(calibratedP(Int32(presRaw))) / 100.0
+            let humCal = Double(calibrationH(humRaw)) / 1024.0
+            
+            if (presCal > 1400) {
+                print("気圧が異常値...")
+                return
+            }
+            
+            self.delegate?.didReadEnvironmentData(tempCal: tempCal, presCal: presCal, humCal: humCal)
+            return
+        }
         
         switch readSequenceCount {
         case 0:
-            datas = datas + data[0...7]
+            datas = datas + data
             readSequenceCount += 1
             break
         case 1:
-            datas = datas + data[0...7]
+            datas = datas + data
             readSequenceCount += 1
             break
         case 2:
-            datas = datas + data[0...7]
+            datas = datas + data
             readSequenceCount += 1
             break
         case 3:
-            datas = datas + [data[0]]
+            datas = datas + data
             readSequenceCount += 1
             break
         case 4:
-            datas = datas + data[0...6]
+            datas = datas + data
             readSequenceCount += 1
 
             let d = datas
@@ -314,7 +400,8 @@ public class CoreBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeriphe
             self.delegate?.didReadEnvironmentData(tempCal: tempCal, presCal: presCal, humCal: humCal)
 
             self.readSequenceCount = 0
-            self.datas.removeAll()
+            // self.datas.removeAll()
+            isI2CReady = true
             break
         default:
             break

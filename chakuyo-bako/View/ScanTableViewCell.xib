@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScanTableViewCell" rowHeight="136" id="JWT-3P-usj" customClass="ScanTableViewCell" customModule="chakuyo_bako" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JWT-3P-usj" id="WJc-J7-PMK">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="135.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKZ-DD-BIR">
+                        <rect key="frame" x="16" y="0.0" width="343" height="125"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apd-xV-FpJ">
+                                <rect key="frame" x="122" y="64.5" width="100" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="5yQ-1q-bNC"/>
+                                    <constraint firstAttribute="width" constant="100" id="t2v-oh-G5N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chakuyo-bako" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yed-NV-BhX">
+                                <rect key="frame" x="122" y="30.5" width="152.5" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="s9p-ZU-ptH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chakuyo-bako-icon" translatesAutoresizingMaskIntoConstraints="NO" id="fPe-KJ-BFF">
+                                <rect key="frame" x="13" y="23" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="0s9-LK-KNE"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fPe-KJ-BFF" firstAttribute="top" secondItem="zKZ-DD-BIR" secondAttribute="top" constant="23" id="0Xe-tB-S4J"/>
+                            <constraint firstItem="Yed-NV-BhX" firstAttribute="top" secondItem="zKZ-DD-BIR" secondAttribute="top" constant="30.5" id="XLk-fe-qAP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fPe-KJ-BFF" secondAttribute="bottom" constant="-2" id="XkG-Bh-QT3"/>
+                            <constraint firstItem="apd-xV-FpJ" firstAttribute="top" secondItem="Yed-NV-BhX" secondAttribute="bottom" constant="7" id="fx1-gb-9L8"/>
+                            <constraint firstItem="apd-xV-FpJ" firstAttribute="leading" secondItem="fPe-KJ-BFF" secondAttribute="trailing" constant="13" id="nz9-Mf-W8O"/>
+                            <constraint firstItem="Yed-NV-BhX" firstAttribute="leading" secondItem="fPe-KJ-BFF" secondAttribute="trailing" constant="13" id="sjU-yX-Ry3"/>
+                            <constraint firstItem="fPe-KJ-BFF" firstAttribute="leading" secondItem="zKZ-DD-BIR" secondAttribute="leading" constant="13" id="yVT-Yo-Z9u"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zKZ-DD-BIR" firstAttribute="top" secondItem="WJc-J7-PMK" secondAttribute="top" id="4OR-Jc-gbh"/>
+                    <constraint firstAttribute="bottom" secondItem="zKZ-DD-BIR" secondAttribute="bottom" constant="10.5" id="7Mj-nL-UV7"/>
+                    <constraint firstItem="zKZ-DD-BIR" firstAttribute="leading" secondItem="WJc-J7-PMK" secondAttribute="leading" constant="16" id="pa9-SG-kGd"/>
+                    <constraint firstItem="zKZ-DD-BIR" firstAttribute="top" secondItem="WJc-J7-PMK" secondAttribute="top" id="qdB-lt-833"/>
+                    <constraint firstAttribute="trailing" secondItem="zKZ-DD-BIR" secondAttribute="trailing" constant="16" id="wFz-Mj-FIW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellView" destination="zKZ-DD-BIR" id="zsu-Cu-Yvy"/>
+                <outlet property="identifierName" destination="apd-xV-FpJ" id="5tf-2d-QJf"/>
+                <outlet property="parentView" destination="WJc-J7-PMK" id="8M3-kw-VNV"/>
+            </connections>
+            <point key="canvasLocation" x="-218.40000000000001" y="-79.160419790104953"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chakuyo-bako-icon" width="165" height="150"/>
+    </resources>
+</document>
