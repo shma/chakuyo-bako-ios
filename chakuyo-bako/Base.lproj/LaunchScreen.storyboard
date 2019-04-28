@@ -21,13 +21,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MadeWithLove" translatesAutoresizingMaskIntoConstraints="NO" id="SvB-8p-r88">
                                 <rect key="frame" x="121.5" y="537" width="132" height="65"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chakuyo-bako-icon" translatesAutoresizingMaskIntoConstraints="NO" id="k5K-Qt-UWS">
+                                <rect key="frame" x="16" y="185" width="345" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="cyM-4Y-AnK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.10588235294117647" green="0.54509803921568623" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SvB-8p-r88" secondAttribute="bottom" constant="65" id="3WA-vp-pAT"/>
+                            <constraint firstItem="k5K-Qt-UWS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="165" id="6bK-Ux-xUv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SvB-8p-r88" secondAttribute="trailing" constant="121.5" id="Dek-ZR-qvH"/>
                             <constraint firstItem="SvB-8p-r88" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FOE-OF-Vbk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k5K-Qt-UWS" secondAttribute="trailing" constant="14" id="Jot-CL-FIB"/>
                             <constraint firstItem="SvB-8p-r88" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="121.5" id="kpj-yZ-VdY"/>
+                            <constraint firstItem="k5K-Qt-UWS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="1" id="qR4-WE-OGa"/>
+                            <constraint firstItem="k5K-Qt-UWS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vAg-zx-UgT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,5 +49,6 @@
     </scenes>
     <resources>
         <image name="MadeWithLove" width="132" height="65"/>
+        <image name="chakuyo-bako-icon" width="165" height="150"/>
     </resources>
 </document>
